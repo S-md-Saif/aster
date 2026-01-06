@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Checkout | ASTER</title>
+
+  <link rel="stylesheet" href="../style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    .checkout-box {
+      background: white;
+      margin: 40px 200px;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+    }
+
+    .checkout-box h3 {
+      margin-bottom: 15px;
+    }
+
+    .checkout-box input,
+    .checkout-box textarea,
+    .checkout-box select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    .pay-btn {
+      background: #0071e3;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .pay-btn:hover {
+      transform: scale(1.1);
+      background: #005bb5;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<div class="navbar">
+  <div class="logo">ASTER</div>
+  <div class="menu">
+    <a href="cart.html" class="menu-item">← Back to Cart</a>
+  </div>
+</div>
+
+<!-- ===== CHECKOUT ===== -->
+<div class="checkout-box">
+  <h2>Checkout</h2>
+
+  <!-- ADDRESS -->
+  <h3>Delivery Address</h3>
+  <input type="text" placeholder="Full Name">
+  <input type="text" placeholder="Phone Number">
+  <textarea placeholder="Full Address"></textarea>
+
+  <!-- PAYMENT -->
+  <h3>Payment Method</h3>
+  <select id="paymentMethod">
+    <option>Credit / Debit Card</option>
+    <option>UPI</option>
+    <option>Cash on Delivery</option>
+  </select>
+
+  <!-- TOTAL -->
+  <h3 id="finalAmount">Total: ₹0</h3>
+
+  <button class="pay-btn" onclick="placeOrder()">Place Order</button>
+</div>
+
+<script>
+  const cart = JSON.parse(localStorage.getItem("cart")) || [];
+  const finalAmount = document.getElementById("finalAmount");
+
+  let total = 0;
+  cart.forEach(item => total += item.price);
+  finalAmount.innerText = "Total: ₹" + total;
+
+  function placeOrder() {
+    if (cart.length === 0) {
+      alert("Cart is empty 🛒");
+      return;
+    }
+
+    alert("Order placed successfully");
+    localStorage.removeItem("cart");
+
+    // ✅ FIXED redirect
+    window.location.href = "../index.html";
+  }
+</script>
+
+</body>
+</html>

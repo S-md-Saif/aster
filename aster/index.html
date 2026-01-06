@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ASTER</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar">
+  <div class="logo">ASTER</div>
+
+  <div class="menu">
+
+    <!-- SEARCH -->
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search products..."
+        onkeyup="searchProducts()"
+      >
+    </div>
+
+    <!-- MOBILES -->
+    <div class="pill" tabindex="0">
+      <span class="menu-item">Mobiles</span>
+      <div class="dropdown">
+        <a href="phones/mobile-apple.html">Apple</a>
+        <a href="phones/mobile-samsung.html">Samsung</a>
+        <a href="phones/mobile-oneplus.html">OnePlus</a>
+        <a href="phones/mobile-vivo.html">Vivo</a>
+        <a href="phones/mobile-nothing.html">Nothing</a>
+      </div>
+    </div>
+
+    <!-- LAPTOPS -->
+    <div class="pill" tabindex="0">
+      <span class="menu-item">Laptops</span>
+      <div class="dropdown">
+        <a href="laptops/laptop-apple.html">Apple</a>
+        <a href="laptops/laptop-hp.html">HP</a>
+        <a href="laptops/laptop-dell.html">Dell</a>
+        <a href="laptops/laptop-asus.html">Asus</a>
+        <a href="laptops/laptop-samsung.html">Samsung</a>
+      </div>
+    </div>
+
+    <!-- WATCHES -->
+    <div class="pill" tabindex="0">
+      <span class="menu-item">Watches</span>
+      <div class="dropdown">
+        <a href="Watches/watch-apple.html">Apple</a>
+        <a href="Watches/watch-samsung.html">Samsung</a>
+        <a href="Watches/watch-firebolt.html">Firebolt</a>
+        <a href="Watches/watch-huawei.html">Huawei</a>
+      </div>
+    </div>
+
+    <!-- HEADSET -->
+    <div class="pill" tabindex="0">
+      <span class="menu-item">Headset</span>
+      <div class="dropdown">
+        <a href="Headset/accessory-apple.html">Apple</a>
+        <a href="Headset/accessory-samsung.html">Samsung</a>
+        <a href="Headset/accessory-other.html">Others</a>
+      </div>
+    </div>
+
+    <!-- CART -->
+    <a href="interaction/cart.html" class="menu-item">
+      🛒 (<span id="cartCount">0</span>)
+    </a>
+
+    <!-- LOGIN -->
+    <a href="interaction/login.html" class="menu-item">Login</a>
+
+  </div>
+</nav>
+
+<main>
+
+<!-- ================= MOBILES ================= -->
+<section>
+  <h2>Mobiles</h2>
+  <div class="products-row">
+
+    <div class="card" data-name="iphone 15">
+      <img loading="lazy" src="Images/IPhone15.png" alt="iPhone 15">
+      <h4>iPhone 15</h4>
+      <p class="price">₹79,900</p>
+      <button onclick="addToCart('iPhone 15',79900,'../Images/IPhone15.png')">Add to Cart</button>
+    </div>
+
+    <div class="card" data-name="galaxy s25 ultra">
+      <img loading="lazy" src="Images/S25ultra.png" alt="Galaxy S25 Ultra">
+      <h4>Galaxy S25 Ultra</h4>
+      <p class="price">₹1,29,999</p>
+      <button onclick="addToCart('Galaxy S25 Ultra',129999,'../Images/S25ultra.png')">Add to Cart</button>
+    </div>
+
+    <div class="card" data-name="galaxy s23">
+      <img loading="lazy" src="Images/S23.png" alt="Galaxy S23">
+      <h4>Galaxy S23</h4>
+      <p class="price">₹74,999</p>
+      <button onclick="addToCart('Galaxy S23',74999,'../Images/S23.png')">Add to Cart</button>
+    </div>
+
+    <div class="card" data-name="oneplus 12">
+      <img loading="lazy" src="Images/oneplus12.png" alt="OnePlus 12">
+      <h4>OnePlus 12</h4>
+      <p class="price">₹69,999</p>
+      <button onclick="addToCart('OnePlus 12',69999,'../Images/oneplus12.png')">Add to Cart</button>
+    </div>
+
+    <div class="card" data-name="vivo x200 fe">
+      <img loading="lazy" src="Images/vivox200fe.png" alt="Vivo X200 FE">
+      <h4>Vivo X200 FE</h4>
+      <p class="price">₹54,999</p>
+      <button onclick="addToCart('Vivo X200 FE',54999,'../Images/vivox200fe.png')">Add to Cart</button>
+    </div>
+
+    <div class="card" data-name="nothing phone 3">
+      <img loading="lazy" src="Images/nothingphone3.png" alt="Nothing Phone 3">
+      <h4>Nothing Phone 3</h4>
+      <p class="price">₹39,999</p>
+      <button onclick="addToCart('Nothing Phone 3',39999,'../Images/nothingphone3.png')">Add to Cart</button>
+    </div>
+
+    <div class="card" data-name="iphone se">
+      <img loading="lazy" src="Images/iphonese.png" alt="iPhone SE">
+      <h4>iPhone SE</h4>
+      <p class="price">₹29,900</p>
+      <button onclick="addToCart('iPhone SE',29900,'../Images/iphonese.png')">Add to Cart</button>
+    </div>
+
+    <div class="card" data-name="galaxy a14">
+      <img loading="lazy" src="Images/A55.png" alt="Galaxy A55">
+      <h4>Galaxy A55</h4>
+      <p class="price">₹14,999</p>
+      <button onclick="addToCart('Galaxy A55',14999,'../Images/A55.png')">Add to Cart</button>
+    </div>
+
+    <div class="card" data-name="oneplus nord ce 3 lite">
+      <img loading="lazy" src="Images/oneplus13r.png" alt="OnePlus Nord CE 3 Lite">
+      <h4>OnePlus Nord CE 3 Lite</h4>
+      <p class="price">₹13,999</p>
+      <button onclick="addToCart('OnePlus Nord CE 3 Lite',13999,'../Images/oneplus13r.png')">Add to Cart</button>
+    </div>
+
+    <div class="card" data-name="vivo y100">
+      <img loading="lazy" src="Images/vivov60e.png" alt="Vivo Y100">
+      <h4>Vivo Y100</h4>
+      <p class="price">₹11,999</p>
+      <button onclick="addToCart('Vivo Y100',11999,'../Images/vivov60e.png')">Add to Cart</button>
+    </div>
+
+    <div class="card" data-name="nothing phone 2">
+      <img loading="lazy" src="Images/nothingphone2.png" alt="Nothing Phone 2">
+      <h4>Nothing Phone 2</h4>
+      <p class="price">₹9,999</p>
+      <button onclick="addToCart('Nothing Phone 2',9999,'../Images/nothingphone2.png')">Add to Cart</button>
+    </div>
+
+    <div class="card" data-name="iphone 12 mini">
+      <img loading="lazy" src="Images/IPhoneSE.png" alt="iPhone 12 Mini">
+      <h4>iPhone 12 Mini</h4>
+      <p class="price">₹7,999</p>
+      <button onclick="addToCart('iPhone 12 Mini',7999,'../Images/IPhoneSE.png')">Add to Cart</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= LAPTOPS ================= -->
+<section>
+  <h2>Laptops</h2>
+  <div class="products-row">
+
+    <div class="card" data-name="macbook air m1">
+      <img loading="lazy" src="Images/Macbook.png" alt="MacBook Air M1">
+      <h4>MacBook Air M1</h4>
+      <p class="price">₹89,900</p>
+      <button onclick="addToCart('MacBook Air M1',89900,'../Images/Macbook.png')">Add to Cart</button>
+    </div>
+
+    <div class="card" data-name="hp pavilion">
+      <img loading="lazy" src="Images/samsunglaptop.png" alt="HP Pavilion">
+      <h4>HP Pavilion</h4>
+      <p class="price">₹79,999</p>
+      <button onclick="addToCart('HP Pavilion',79999,'../Images/samsunglaptop.png')">Add to Cart</button>
+    </div>
+
+    <div class="card" data-name="dell xps 13">
+      <img loading="lazy" src="Images/delllaptop.png" alt="Dell XPS 13">
+      <h4>Dell XPS 13</h4>
+      <p class="price">₹1,19,999</p>
+      <button onclick="addToCart('Dell XPS 13',119999,'../Images/delllaptop.png')">Add to Cart</button>
+    </div>
+
+    <div class="card" data-name="asus zenbook">
+      <img loading="lazy" src="Images/asuslaptop.png" alt="Asus ZenBook">
+      <h4>Asus ZenBook</h4>
+      <p class="price">₹69,999</p>
+      <button onclick="addToCart('Asus ZenBook',69999,'../Images/asuslaptop.png')">Add to Cart</button>
+      </div>
+    <div class="card" data-name="samsung galaxy book">
+      <img loading="lazy" src="Images/samsunglaptop.png" alt="Samsung Galaxy Book">
+      <h4>Samsung Galaxy Book</h4>
+      <p class="price">₹64,999</p>
+      <button onclick="addToCart('Samsung Galaxy Book',64999,'../Images/samsunglaptop.png')">Add to Cart</button>
+    </div>
+
+    <div class="card" data-name="macbook pro m2">
+      <img loading="lazy" src="Images/Macbook.png" alt="MacBook Pro M2">
+      <h4>MacBook Pro M2</h4>
+      <p class="price">₹1,29,900</p>
+      <button onclick="addToCart('MacBook Pro M2',129900,'../Images/Macbook.png')">Add to Cart</button>
+      </div>
+
+    <div class="card" data-name="hp spectre x360">
+      <img loading="lazy" src="Images/asuslaptop.png" alt="HP Spectre x360">
+      <h4>HP Spectre x360</h4>
+      <p class="price">₹1,09,999</p>
+      <button onclick="addToCart('HP Spectre x360',109999,'../Images/asuslaptop.png')">Add to Cart</button>
+      </div>
+
+    <div class="card" data-name="dell inspiron">
+      <img loading="lazy" src="Images/delllaptop.png" alt="Dell Inspiron">
+      <h4>Dell Inspiron</h4>
+      <p class="price">₹54,999</p>
+      <button onclick="addToCart('Dell Inspiron',54999,'../Images/delllaptop.png')">Add to Cart</button>
+      </div>
+
+    <div class="card" data-name="asus tuf gaming">
+      <img loading="lazy" src="Images/asuslaptop.png" alt="Asus TUF Gaming">
+      <h4>Asus TUF Gaming</h4>
+      <p class="price">₹74,999</p>
+      <button onclick="addToCart('Asus TUF Gaming',74999,'../Images/asuslaptop.png')">Add to Cart</button>
+      </div>
+
+    <div class="card" data-name="samsung notebook 7">
+      <img loading="lazy" src="Images/samsunglaptop.png" alt="Samsung Notebook 7">
+      <h4>Samsung Notebook 7</h4>
+      <p class="price">₹59,999</p>
+      <button onclick="addToCart('Samsung Notebook 7',59999,'../Images/samsunglaptop.png')">Add to Cart</button>
+  </div>
+</section>
+
+<!-- ================= WATCHES ================= -->
+<section>
+  <h2>Watches</h2>
+  <div class="products-row">
+
+    <div class="card" data-name="apple watch series 9">
+      <img loading="lazy" src="Images/applewatch1.png" alt="Apple Watch Series 9">
+      <h4>Apple Watch Series 9</h4>
+      <p class="price">₹41,900</p>
+      <button onclick="addToCart('Apple Watch Series 9',41900,'../Images/applewatch1.png')">Add to Cart</button>
+    </div>
+
+    <div class="card" data-name="galaxy watch">
+      <img loading="lazy" src="Images/applewatch4.png" alt="Galaxy Watch">
+      <h4>Galaxy Watch</h4>
+      <p class="price">₹29,999</p>
+      <button onclick="addToCart('Galaxy Watch',29999,'../Images/applewatch4.png')">Add to Cart</button>
+    </div>
+
+    <div class="card" data-name="firebolt horizon">
+      <img loading="lazy" src="Images/fireboltwatch1.png" alt="Firebolt Horizon">
+      <h4>Firebolt Horizon</h4>
+      <p class="price">₹15,999</p>
+      <button onclick="addToCart('Firebolt Horizon',15999,'../Images/fireboltwatch1.png')">Add to Cart</button>
+    </div>
+    <div class="card" data-name="huawei watch gt 3">
+      <img loading="lazy" src="Images/fireboltwatch2.png" alt="Huawei Watch GT 3">
+      <h4>Huawei Watch GT 3</h4>
+      <p class="price">₹13,999</p>
+      <button onclick="addToCart('Huawei Watch GT 3',13999,'../Images/fireboltwatch2.png')">Add to Cart</button>
+    </div>
+
+    <div class="card" data-name="apple watch se">
+      <img loading="lazy" src="Images/applewatch1.png" alt="Apple Watch SE">
+      <h4>Apple Watch SE</h4>
+      <p class="price">₹25,900</p>
+      <button onclick="addToCart('Apple Watch SE',25900,'../Images/applewatch1.png')">Add to Cart</button>
+    </div>
+    <div class="card" data-name="galaxy watch active 2">
+      <img loading="lazy" src="Images/applewatch2.png" alt="Galaxy Watch Active 2">
+      <h4>Galaxy Watch Active 2</h4>
+      <p class="price">₹19,999</p>
+      <button onclick="addToCart('Galaxy Watch Active 2',19999,'../Images/applewatch2.png')">Add to Cart</button>
+    </div>
+    <div class="card" data-name="firebolt blaze">
+      <img loading="lazy" src="Images/fireboltwatch2.png" alt="Firebolt Blaze">
+      <h4>Firebolt Blaze</h4>
+      <p class="price">₹9,999</p>
+      <button onclick="addToCart('Firebolt Blaze',9999,'../Images/fireboltwatch2.png')">Add to Cart</button>
+    </div>
+    <div class="card" data-name="huawei watch fit">
+      <img loading="lazy" src="Images/fireboltwatch3.png" alt="Huawei Watch Fit">
+      <h4>Huawei Watch Fit</h4>
+      <p class="price">₹7,999</p>
+      <button onclick="addToCart('Huawei Watch Fit',7999,'../Images/fireboltwatch3.png')">Add to Cart</button> 
+    </div>
+    <div class="card" data-name="apple watch series 8">
+      <img loading="lazy" src="Images/applewatch2.png" alt="Apple Watch Series 8">
+      <h4>Apple Watch Series 8</h4>
+      <p class="price">₹35,900</p>
+      <button onclick="addToCart('Apple Watch Series 8',35900,'../Images/applewatch2.png')">Add to Cart</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HEADSETS ================= -->
+<section>
+  <h2>Headsets</h2>
+  <div class="products-row">
+
+    <div class="card" data-name="airpods pro">
+      <img loading="lazy" src="Images/appleearphones.png" alt="AirPods Pro">
+      <h4>AirPods Pro</h4>
+      <p class="price">₹24,900</p>
+      <button onclick="addToCart('AirPods Pro',24900,'../Images/appleearphones.png')">Add to Cart</button>
+    </div>
+
+    <div class="card" data-name="samsung earphones">
+      <img loading="lazy" src="Images/samsungearphones.png" alt="Samsung Earphones">
+      <h4>Samsung Earphones</h4>
+      <p class="price">₹4,999</p>
+      <button onclick="addToCart('Samsung Earphones',4999,'../Images/samsungearphones.png')">Add to Cart</button>
+    </div>
+    <div class="card" data-name="boAt airdopes">
+      <img loading="lazy" src="Images/samsungearphones2.png" alt="boAt Airdopes">
+      <h4>boAt Airdopes</h4>
+      <p class="price">₹2,999</p>
+      <button onclick="addToCart('boAt Airdopes',2999,'../Images/samsungearphones2.png')">Add to Cart</button>
+      </div> 
+    <div class="card" data-name="jbl tune 125tws">
+      <img loading="lazy" src="Images/appleearphones.png" alt="JBL Tune 125TWS">
+      <h4>JBL Tune 125TWS</h4>
+      <p class="price">₹3,499</p>
+      <button onclick="addToCart('JBL Tune 125TWS',3499,'../Images/appleearphones.png')">Add to Cart</button>
+    </div> 
+    <div class="card" data-name="airpods max">
+      <img loading="lazy" src="Images/appleairpodsmax.png" alt="AirPods Max">
+      <h4>AirPods Max</h4>
+      <p class="price">₹59,900</p>
+      <button onclick="addToCart('AirPods Max',59900,'../Images/appleairpodsmax.png')">Add to Cart</button>
+    </div>
+
+    <div class="card" data-name="samsung galaxy buds pro">
+      <img loading="lazy" src="Images/samsungearphones2.png" alt="Samsung Galaxy Buds Pro">
+      <h4>Samsung Galaxy Buds Pro</h4>
+      <p class="price">₹9,999</p>
+      <button onclick="addToCart('Samsung Galaxy Buds Pro',9999,'../Images/samsungearphones2.png')">Add to Cart</button>
+    </div>
+
+    <div class="card" data-name="boAt rockerz">
+      <img loading="lazy" src="Images/samsungearphones.png" alt="boAt Rockerz">
+      <h4>boAt Rockerz</h4>
+      <p class="price">₹1,999</p>
+      <button onclick="addToCart('boAt Rockerz',1999,'../Images/samsungearphones.png')">Add to Cart</button>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<!-- ===== ABOUT ===== -->
+<section class="about">
+  <h2>About ASTER</h2>
+  <p>
+    ASTER is a demo e-commerce frontend built to showcase UI/UX, search,
+    cart, and checkout flows. No real payments.
+  </p>
+</section>
+
+<footer class="about">
+  <p>📧 support@aster.com</p>
+  <p>© 2026 ASTER</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

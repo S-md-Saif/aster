@@ -1,0 +1,438 @@
+/*  BASIC  */
+* {
+  box-sizing: border-box;
+}
+
+/* Respect user preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(180deg, #eef9fb 0%, #f6fbff 60%);
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+body.bg-dark::before {
+  background: radial-gradient(circle at 20% 30%, rgba(10,130,200,0.10), transparent 40%);
+  filter: blur(120px);
+  opacity: 0.55;
+}
+body.bg-dark::after {
+  background: radial-gradient(circle at 80% 70%, rgba(200,70,255,0.06), transparent 45%);
+  filter: blur(140px);
+  opacity: 0.45;
+}
+
+/*  NAVBAR  */
+.navbar {
+  position: sticky;
+  top: 20px;
+  z-index: 10000;
+
+  margin: 20px 100px;
+  padding: 12px 22px;
+  border-radius: 24px;
+  overflow: visible;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  /* glass base */
+  background: linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.08));
+  border: 1px solid rgba(255,255,255,0.35);
+  box-shadow: 0 10px 30px rgba(20,20,30,0.12), inset 0 1px 0 rgba(255,255,255,0.08);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  backdrop-filter: blur(14px) saturate(140%);
+}
+
+/* sheen + subtle bottom shadow to mimic liquid glass */
+.navbar::before,
+.navbar::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+}
+
+.navbar::before {
+  top: -40%;
+  height: 60%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.28), rgba(255,255,255,0));
+  transform: translateY(-10%);
+  filter: blur(24px);
+  mix-blend-mode: overlay;
+}
+
+.navbar::after {
+  bottom: 0;
+  height: 26%;
+  background: linear-gradient(180deg, rgba(255,255,255,0), rgba(0,0,0,0.06));
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 700;
+  color: rgba(10,10,10,0.9);
+  position: relative;
+  z-index: 1;
+}
+
+/*  MENU  */
+.menu {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.menu-item,
+.pill {
+  background: rgb(255, 255, 255);
+  padding: 8px 18px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.menu-item:hover,
+.pill:hover {
+  transform: scale(1.1);
+}
+
+/* keyboard focus styles for accessibility */
+.menu-item:focus,
+.pill:focus,
+.card button:focus,
+.dropdown a:focus {
+  outline: 3px solid rgba(0,113,227,0.12);
+  outline-offset: 3px;
+}
+
+/* allow keyboard to reveal dropdowns */
+.pill:focus-within .dropdown {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+
+/*  SEARCH  */
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.search-icon {
+  background: #cdeff4;
+  padding: 8px 12px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* 🔹 NEW: search input animation-friendly */
+#searchInput {
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  width: 180px;
+}
+
+/*  DROPDOWN (DELAY FIX)  */
+.pill {
+  position: relative;
+}
+
+/* default hidden */
+.dropdown {
+  opacity: 0;
+  visibility: hidden;
+
+  position: absolute;
+  top: 45px;
+  left: 0;
+
+  background: white;
+  border-radius: 15px;
+  padding: 10px;
+  min-width: 160px;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  z-index: 20000;
+
+  transition:
+    opacity 0.2s ease,
+    visibility 0s linear 1s;
+}
+
+/* show instantly on hover */
+.pill:hover .dropdown,
+.dropdown:hover {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+.dropdown a {
+  display: block;
+  padding: 6px;
+  text-decoration: none;
+  color: black;
+  border-radius: 10px;
+}
+
+.dropdown a:hover {
+  background: #dcf9f1;
+}
+
+/* ===== SECTIONS ===== */
+section {
+  margin: 60px 110px;
+}
+
+section h2 {
+  margin-bottom: 20px;
+}
+
+/* ===== HOME PAGE ROW ===== */
+.products-row {
+  display: flex;
+  flex-direction: row;
+  gap: 20px; /* 🔹 reduced gap */
+
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 15px;
+
+  scroll-behavior: smooth;
+}
+.products-row::-webkit-scrollbar {
+  height: 6px;
+}
+
+.products-row::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+/*  GRID (CATEGORY PAGES) */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 🔹 tighter grid */
+  gap: 20px;
+}
+
+/*  PRODUCT CARD  */
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 14px;
+  text-align: center;
+
+  min-width: 200px;   /* 🔹 reduced */
+  max-width: 200px;
+  flex-shrink: 0;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+.card img {
+  width: 100%;
+  height: 160px; /* 🔹 smaller image */
+  object-fit: contain;
+}
+
+.price {
+  color: #0071e3;
+  font-weight: bold;
+  margin: 6px 0;
+}
+
+/*  BUTTON  */
+.card button {
+  background: #0071e3;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.card button:hover {
+  transform: scale(1.1);
+  background: #005bb5;
+}
+
+/*  ABOUT / FOOTER  */
+.about {
+  margin: 80px 200px;
+  line-height: 1.6;
+}
+
+/*  RESPONSIVE  */
+@media (max-width: 900px) {
+  .navbar,
+  section,
+  .about {
+    margin: 20px;
+  }
+
+  .menu {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  /* allow rows to wrap on narrow screens instead of forcing horizontal scroll */
+  .products-row {
+    flex-wrap: wrap;
+    overflow-x: visible;
+  }
+
+  /* 🔹 cards fit better on mobile */
+  .card {
+    min-width: 180px;
+    max-width: 180px;
+  }
+
+  .card img {
+    height: 140px;
+  }
+}
+
+/* Tablet: improve grid layout for medium screens */
+@media (min-width: 601px) and (max-width: 900px) {
+  .products-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    overflow: visible;
+    padding-bottom: 0;
+  }
+
+  .card {
+    min-width: auto;
+    max-width: none;
+    width: 100%;
+    flex-shrink: 0;
+    text-align: center;
+  }
+
+  .card img {
+    height: 160px;
+  }
+
+  .navbar {
+    margin: 14px;
+    padding: 10px;
+    border-radius: 18px;
+  }
+
+  #searchInput {
+    width: 140px;
+  }
+
+  .menu { gap: 8px; }
+
+  .about { margin: 40px 30px; }
+}
+
+/* Phones: stack navbar, make cards full-width, and tune spacing */
+@media (max-width: 600px) {
+  .navbar {
+    margin: 12px;
+    padding: 10px;
+    border-radius: 14px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    top: 10px;
+  }
+
+  .menu {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: space-between;
+  }
+
+  .search-box {
+    width: 100%;
+    order: 2;
+  }
+
+  #searchInput {
+    width: 100%;
+    padding: 8px 10px;
+  }
+
+  .menu-item,
+  .pill {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+
+  .products-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding-bottom: 0;
+  }
+
+  .card {
+    min-width: auto;
+    max-width: none;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px;
+  }
+
+  .card img {
+    width: 90%;
+    height: auto;
+    max-height: 220px;
+  }
+
+  section { margin: 20px 12px; }
+
+  .about { margin: 20px 12px; }
+
+  .logo { font-size: 18px; }
+
+  /* make dropdowns flow naturally on small screens */
+  .dropdown {
+    position: static;
+    box-shadow: none;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding: 6px;
+    background: transparent;
+  }
+
+  .pill .dropdown { top: auto; left: auto; }
+}
