@@ -1,4 +1,4 @@
-// ================= INIT =================
+// Initialization after DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
 
   // ===== HAMBURGER MENU =====
