@@ -1,6 +1,35 @@
 // ================= INIT =================
 document.addEventListener("DOMContentLoaded", () => {
 
+  // ===== HAMBURGER MENU =====
+  const hamburger = document.getElementById("hamburger");
+  const menu = document.getElementById("menu");
+
+  if (hamburger && menu) {
+    hamburger.addEventListener("click", () => {
+      hamburger.classList.toggle("active");
+      menu.classList.toggle("active");
+    });
+
+    // Close menu when clicking on a link
+    menu.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        hamburger.classList.remove("active");
+        menu.classList.remove("active");
+      });
+    });
+
+    // Toggle dropdown on mobile
+    menu.querySelectorAll(".pill").forEach(pill => {
+      pill.addEventListener("click", (e) => {
+        if (window.innerWidth <= 600) {
+          e.stopPropagation();
+          pill.classList.toggle("active");
+        }
+      });
+    });
+  }
+
   // ===== CART =====
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -33,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
   updateCartCount();
 
 
-  //  SEARCH (debounced)
+  //  SEARCH
   const searchInput = document.getElementById("searchInput");
   let _searchTimer = null;
 

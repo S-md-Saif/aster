@@ -10,11 +10,18 @@
 
 <body>
 
-<!-- ===== NAVBAR ===== -->
+<!--  Navigation bar and logo  -->
 <nav class="navbar">
   <div class="logo">ASTER</div>
 
-  <div class="menu">
+  <!-- HAMBURGER MENU (Mobile) -->
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <div class="menu" id="menu">
 
     <!-- SEARCH -->
     <div class="search-box">
@@ -66,9 +73,9 @@
     <div class="pill" tabindex="0">
       <span class="menu-item">Headset</span>
       <div class="dropdown">
-        <a href="Headset/accessory-apple.html">Apple</a>
-        <a href="Headset/accessory-samsung.html">Samsung</a>
-        <a href="Headset/accessory-other.html">Others</a>
+        <a href="accessories/accessory-apple.html">Apple</a>
+        <a href="accessories/accessory-samsung.html">Samsung</a>
+        <a href="accessories/accessory-other.html">Others</a>
       </div>
     </div>
 
@@ -82,10 +89,9 @@
 
   </div>
 </nav>
-
 <main>
 
-<!-- ================= MOBILES ================= -->
+<!--  MOBILES  -->
 <section>
   <h2>Mobiles</h2>
   <div class="products-row">
@@ -173,15 +179,13 @@
       <p class="price">₹7,999</p>
       <button onclick="addToCart('iPhone 12 Mini',7999,'../Images/IPhoneSE.png')">Add to Cart</button>
     </div>
-
   </div>
 </section>
 
-<!-- ================= LAPTOPS ================= -->
+<!--  LAPTOPS  -->
 <section>
   <h2>Laptops</h2>
   <div class="products-row">
-
     <div class="card" data-name="macbook air m1">
       <img loading="lazy" src="Images/Macbook.png" alt="MacBook Air M1">
       <h4>MacBook Air M1</h4>
@@ -252,7 +256,7 @@
   </div>
 </section>
 
-<!-- ================= WATCHES ================= -->
+<!--  WATCHES  -->
 <section>
   <h2>Watches</h2>
   <div class="products-row">
@@ -317,7 +321,7 @@
   </div>
 </section>
 
-<!-- ================= HEADSETS ================= -->
+<!--  HEADSETS  -->
 <section>
   <h2>Headsets</h2>
   <div class="products-row">
@@ -367,13 +371,11 @@
       <p class="price">₹1,999</p>
       <button onclick="addToCart('boAt Rockerz',1999,'../Images/samsungearphones.png')">Add to Cart</button>
     </div>
-
   </div>
 </section>
-
 </main>
 
-<!-- ===== ABOUT ===== -->
+<!--  ABOUT  -->
 <section class="about">
   <h2>About ASTER</h2>
   <p>
@@ -384,6 +386,9 @@
 
 <footer class="about">
   <p>📧 support@aster.com</p>
+  <p>📱 WhatsApp: +91 9876543210</p>
+  <p>📸 Instagram: <a href="https://instagram.com/aster.shop" target="_blank">@aster.shop</a></p>
+  <p><a href="#contact-form">Contact Us</a></p>
   <p>© 2026 ASTER</p>
 </footer>
 
