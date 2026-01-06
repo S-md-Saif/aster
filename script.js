@@ -39,18 +39,17 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  //  FIX: normalize image path here
-  window.addToCart = function (name, price, image) {
-    let fixedImage = image;
+  // normalize image path; accessory pages pass (name, image, price)
+  window.addToCart = function (name, image, price) {
+    let fixedImage = typeof image === 'string' ? image : '';
 
-    // if image starts with ../Images/, fix it
-    if (image && image.startsWith("../")) {
-      fixedImage = image.replace("../", "");
+    if (fixedImage && fixedImage.startsWith("../")) {
+      fixedImage = fixedImage.replace("../", "");
     }
 
     cart.push({
       name,
-      price,
+      price: Number(price) || 0,
       image: fixedImage || "Images/placeholder.png"
     });
 
@@ -102,16 +101,6 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("user", nameInput.value.trim());
     window.location.href = "../index.html";
   };
-
-
-  //  SHOW USER NAME 
-  const user = localStorage.getItem("user");
-  const userArea = document.getElementById("user-area");
-
-  if (user && userArea) {
-    userArea.textContent = "Hi, " + user;
-    userArea.style.fontWeight = "bold";
-  }
 
   // lightweight non-blocking toast
   function showToast(message, timeout = 2200) {
