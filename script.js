@@ -39,18 +39,30 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // normalize image path; accessory pages pass (name, image, price)
-  window.addToCart = function (name, image, price) {
-    let fixedImage = typeof image === 'string' ? image : '';
+  // normalize image path; handle different parameter orders
+  window.addToCart = function (name, imageOrPrice, priceOrImage) {
+    // Determine if second param is image or price
+    let image = '';
+    let price = 0;
 
-    if (fixedImage && fixedImage.startsWith("../")) {
-      fixedImage = fixedImage.replace("../", "");
+    if (typeof imageOrPrice === 'string') {
+      // Second param is image
+      image = imageOrPrice;
+      price = Number(priceOrImage) || 0;
+    } else {
+      // Second param is price
+      price = Number(imageOrPrice) || 0;
+      image = typeof priceOrImage === 'string' ? priceOrImage : '';
+    }
+
+    if (image && image.startsWith("../")) {
+      image = image.replace("../", "");
     }
 
     cart.push({
       name,
-      price: Number(price) || 0,
-      image: fixedImage || "Images/placeholder.png"
+      price,
+      image: image || "Images/placeholder.png"
     });
 
     localStorage.setItem("cart", JSON.stringify(cart));
